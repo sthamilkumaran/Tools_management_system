@@ -7,6 +7,7 @@ use App\Models\Addchecklist;
 use App\Models\Camlist;
 use App\Models\Wirelist;
 use App\Models\Vehiclelist;
+use Livewire\WithPagination;
 
 // use Carbon\Carbon;
 // use Haruncpi\LaravelIdGenerator\IdGenerator;
@@ -14,6 +15,7 @@ use App\Models\Vehiclelist;
 class AddchecklistComponent extends Component
 {
 
+    use WithPagination;
     public $adminName;
     public $adminId;
     public $inputTool;
@@ -37,6 +39,18 @@ class AddchecklistComponent extends Component
 
     public $vehicledata_edit_id;
     public $vehicledata_delete_id;
+
+    // search ------------------------------------------------------------------------------------
+    public $search_T = '';
+    public $search_C = '';
+    public $search_W = '';
+    public $search_V = '';
+    protected $paginationTheme = 'bootstrap';
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     // tool datas post----------------------------------------------------------------------------
     public function updated($fields)
@@ -419,15 +433,13 @@ class AddchecklistComponent extends Component
         $this->vehicledata_delete_id = '';
     }
 
-    public function test(){
-        dd($this->adminId);
-    }
+
     public function render()
     {
-        $addchecklist = Addchecklist::All();
-        $camlist = Camlist::All();
-        $wirelist = Wirelist::All();
-        $vehiclelist = Vehiclelist::All();
+        $addchecklist = Addchecklist::where('inputTool', 'like', '%'.$this->search_T.'%')->paginate(5);
+        $camlist = Camlist::where('inputCam', 'like', '%'.$this->search_C.'%')->paginate(5);
+        $wirelist = Wirelist::where('inputWire', 'like', '%'.$this->search_W.'%')->paginate(5);
+        $vehiclelist = Vehiclelist::where('inputVehicle', 'like', '%'.$this->search_V.'%')->paginate(5);
         return view('livewire.addchecklist-component', [
             'addchecklist' => $addchecklist,
             'camlist' => $camlist,
