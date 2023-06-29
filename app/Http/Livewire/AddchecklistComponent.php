@@ -418,6 +418,10 @@ class AddchecklistComponent extends Component
     {
         $this->vehicledata_delete_id = '';
     }
+
+    public function test(){
+        dd($this->adminId);
+    }
     public function render()
     {
         $addchecklist = Addchecklist::All();
