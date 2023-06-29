@@ -13,12 +13,12 @@
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
-                <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-                        out modal
+                <div class="flex items-center bg-indigo-900 justify-between p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-xl font-medium text-indigo-300 dark:text-white">
+                        out Tools
                     </h3>
                     <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        class="text-indigo-300 bg-transparent hover:bg-indigo-300 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
                         data-modal-hide="out-modal">
                         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg">
@@ -31,15 +31,15 @@
                 </div>
                 <!-- Modal body -->
                 <div class="px-6 py-6 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
+                    <h3 class="mb-4 text-xl font-medium text-indigo-900 dark:text-white">Sign in to our platform</h3>
 
                     <form>
                         <div class="grid md:grid-cols-2 md:gap-6">
                             <div class="relative z-0 w-full mb-6 group">
-                                <input type="text" name="inputName" id="inputName" wire:model='inputName'
+                                <input type="text" name="userName" id="userName" wire:model='userName'
                                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                     placeholder=" " required />
-                                <label for="inputName"
+                                <label for="userName"
                                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                     Name</label>
                             </div>
@@ -53,7 +53,7 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                             </div>
-                            <input datepicker datepicker-autohide type="text" name="inputDate" id="inputDate" wire:model='inputDate'
+                            <input datepicker datepicker-autohide type="text" name="outDate" id="outDate" wire:model='outDate'
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Select date">
                         </div>
@@ -61,64 +61,33 @@
                         <div class="relative max-w-sm">
                             <ul
                                 class="w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                @if ($addchecklist->count() > 0)
+                                @foreach ($addchecklist as $addchecklists)
                                 <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
                                     <div class="flex items-center pl-3">
-                                        <input id="vue-checkbox" type="checkbox" value=""
+                                        <input id="vue-checkbox" wire:model.lazy="addchecklists" wire:click='toolId' type="checkbox" value="{{$addchecklists->id}}"
                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                         <label for="vue-checkbox"
-                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Vue
-                                            JS</label>
-                                        <input type="number" id="visitors"
+                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$addchecklists->inputTool}}</label>
+                                        <input type="number" id="visitors" wire:click='toolCount'
                                             class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-2/6 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             style="" placeholder="" required>
                                     </div>
                                 </li>
-                                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                                    <div class="flex items-center pl-3">
-                                        <input id="react-checkbox" type="checkbox" value=""
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                        <label for="react-checkbox"
-                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">React</label>
-                                        <input type="number" id="visitors"
-                                            class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-2/6 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            style="" placeholder="" required>
+                                @endforeach
+                                @else
+                                <tr>
+                                    <td colspan="11"><small style="margin-left:30%" class="text-red-600 italic text-center">No Tools</small></td>
+                                </tr>
 
-                                    </div>
-                                </li>
-                                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                                    <div class="flex items-center pl-3">
-                                        <input id="angular-checkbox" type="checkbox" value=""
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                        <label for="angular-checkbox"
-                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Angular</label>
-                                        <input type="number" id="visitors"
-                                            class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-2/6 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            style="" placeholder="" required>
-
-                                    </div>
-                                </li>
-                                <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
-                                    <div class="flex items-center pl-3">
-                                        <input id="laravel-checkbox" type="checkbox" value=""
-                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                        <label for="laravel-checkbox"
-                                            class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Laravel</label>
-                                        <input type="number" id="visitors"
-                                            class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-2/6 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            style="" placeholder="" required>
-                                    </div>
-                                </li>
+                                @endif
                             </ul>
                         </div>
 
                         <button type="submit"
-                            class="text-blue-900 bg-gradient-to-r from-green-400 to-blue-100 hover:bg-gradient-to-l focus:ring-1 focus:outline-none focus:ring-green-900 dark:focus:ring-blue-700 font-medium rounded-lg  mt-10 text-sm  text-center px-5 py-2.5 hover:shadow-xl hover:shadow-blue-500/50">I
-                            accept</button>
+                            class="text-blue-900 bg-gradient-to-r from-green-400 to-blue-100 hover:bg-gradient-to-l focus:ring-1 focus:outline-none focus:ring-green-900 dark:focus:ring-blue-700 font-medium rounded-lg  mt-10 text-sm  text-center px-5 py-2.5 hover:shadow-xl hover:shadow-blue-500/50">Submit</button>
                         <button data-modal-hide="out-modal" type="button"
-                            class="text-blue-900 bg-gradient-to-r from-red-500 to-red-100 hover:bg-gradient-to-l focus:ring-1 focus:outline-none focus:ring-red-900 dark:focus:ring-red-700 font-medium rounded-lg  mt-10 text-sm  text-center px-5 py-2.5 hover:shadow-xl hover:shadow-red-500/50 border-red-600">Decline</button>
-                        {{-- <button type="submit"
-                            class="text-blue-900 bg-gradient-to-r from-blue-500 to-blue-100 hover:bg-gradient-to-l focus:ring-1 focus:outline-none focus:ring-purple-200 dark:focus:ring-blue-700 font-medium rounded-lg mr-16 mt-10 text-sm  text-center px-5 py-2.5 hover:shadow-xl hover:shadow-blue-500/50">Submit</button>
-                        --}}
+                            class="text-blue-900 bg-gradient-to-r from-red-500 to-red-100 hover:bg-gradient-to-l focus:ring-1 focus:outline-none focus:ring-red-900 dark:focus:ring-red-700 font-medium rounded-lg  mt-10 m-2 text-sm  text-center px-5 py-2.5 hover:shadow-xl hover:shadow-red-500/50 border-red-600">Cancel</button>
                     </form>
                 </div>
                 <!-- Modal footer -->
