@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('adminId');
             $table->string('adminName');
-            $table->string('inputVehicle');
+            $table->string('inputVehicle')->uniqid();
             $table->string('vehicleQty');
             $table->timestamps();
         });

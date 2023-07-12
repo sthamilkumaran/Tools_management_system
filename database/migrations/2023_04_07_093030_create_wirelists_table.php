@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('adminId');
             $table->string('adminName');
-            $table->string('inputWire');
+            $table->string('inputWire')->unique();
             $table->string('wireQty');
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('adminId');
             $table->string('adminName');
-            $table->string('inputCam');
+            $table->string('inputCam')->unique();
             $table->string('camQty');
             $table->timestamps();
         });

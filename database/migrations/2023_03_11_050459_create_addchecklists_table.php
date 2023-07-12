@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('adminId');
             $table->string('adminName');
-            $table->string('inputTool');
+            $table->string('inputTool')->unique();
             $table->string('toolQty');
             $table->timestamps();
         });
