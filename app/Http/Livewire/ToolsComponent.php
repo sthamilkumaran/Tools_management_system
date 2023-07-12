@@ -8,7 +8,25 @@ use App\Models\Addchecklist;
 
 class ToolsComponent extends Component
 {
-    public $addchecklists = [];
+    public $userName, $outDate, $toolCount;
+    public array $toolLists = [];
+
+    public function store(){
+        try{
+            // Create Category
+            Tool::create([
+                'userName'=>$this->userName,
+                // 'outDate'=>$this->outDate,
+                'toolLists' => json_encode($this->toolLists),
+
+            ]);
+
+            dd($this->toolLists);
+
+        }catch(\Exception $e){
+            dd('error');
+        }
+    }
 
     public function render()
     {

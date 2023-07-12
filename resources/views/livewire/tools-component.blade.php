@@ -7,7 +7,7 @@
     </button>
 
     <!-- out Modal -->
-    <div id="out-modal" tabindex="-1"
+    <div id="out-modal" tabindex="-1" wire:ignore.self
         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
         <div class="relative w-full h-full max-w-md md:h-auto">
             <!-- Modal content -->
@@ -44,7 +44,7 @@
                                     Name</label>
                             </div>
                         </div>
-                        <div class="relative max-w-sm">
+                        {{-- <div class="relative max-w-sm">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                 <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,7 @@
                             <input datepicker datepicker-autohide type="text" name="outDate" id="outDate" wire:model='outDate'
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Select date">
-                        </div>
+                        </div> --}}
                         <br>
                         <div class="relative max-w-sm">
                             <ul
@@ -65,13 +65,13 @@
                                 @foreach ($addchecklist as $addchecklists)
                                 <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
                                     <div class="flex items-center pl-3">
-                                        <input id="vue-checkbox" wire:model.lazy="addchecklists" wire:click='toolId' type="checkbox" value="{{$addchecklists->id}}"
+                                        <input id="vue-checkbox" wire:model="toolLists" type="checkbox" value="{{ $addchecklists->id }}"
                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                         <label for="vue-checkbox"
                                             class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$addchecklists->inputTool}}</label>
-                                        <input type="number" id="visitors" wire:click='toolCount'
+                                        {{-- <input type="number" id="visitors" wire:model='toolCount'
                                             class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-2/6 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            style="" placeholder="" required>
+                                            style="" placeholder=""> --}}
                                     </div>
                                 </li>
                                 @endforeach
@@ -84,7 +84,7 @@
                             </ul>
                         </div>
 
-                        <button type="submit"
+                        <button type="button" wire:click='store'
                             class="text-blue-900 bg-gradient-to-r from-green-400 to-blue-100 hover:bg-gradient-to-l focus:ring-1 focus:outline-none focus:ring-green-900 dark:focus:ring-blue-700 font-medium rounded-lg  mt-10 text-sm  text-center px-5 py-2.5 hover:shadow-xl hover:shadow-blue-500/50">Submit</button>
                         <button data-modal-hide="out-modal" type="button"
                             class="text-blue-900 bg-gradient-to-r from-red-500 to-red-100 hover:bg-gradient-to-l focus:ring-1 focus:outline-none focus:ring-red-900 dark:focus:ring-red-700 font-medium rounded-lg  mt-10 m-2 text-sm  text-center px-5 py-2.5 hover:shadow-xl hover:shadow-red-500/50 border-red-600">Cancel</button>
