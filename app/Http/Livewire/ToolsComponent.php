@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Tool;
 use App\Models\Addchecklist;
+use Carbon\Carbon;
 
 class ToolsComponent extends Component
 {
@@ -13,7 +14,7 @@ class ToolsComponent extends Component
     public array $toolLists = [];
 
     public function store(){
-        $day = date('Y-m-d');
+        $day = Carbon::today();
         $this->today = $day;
         // dd($this->outDate);
         try{
