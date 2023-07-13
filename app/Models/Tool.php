@@ -9,7 +9,10 @@ class Tool extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'userName','toolLists',
+        'userName',
+        'toolLists',
+        'outDate',
+        'toolCount',
     ];
     public $timestamps = true;
 

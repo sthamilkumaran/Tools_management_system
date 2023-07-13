@@ -47,7 +47,7 @@
                         <div class="relative max-w-sm">
                             <input type="text" wire:model='outDate'
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-2 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="{{$today}}" disabled>
+                                placeholder="{{$today1}}" disabled>
                         </div>
                         <br>
                         <div class="relative max-w-sm">
@@ -57,13 +57,13 @@
                                 @foreach ($addchecklist as $addchecklists)
                                 <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
                                     <div class="flex items-center pl-3">
-                                        <input id="vue-checkbox" wire:model="toolLists" type="checkbox" value="{{ $addchecklists->id }}"
+                                        <input id="vue-checkbox" wire:model="toolLists" type="checkbox" value="{{ $addchecklists->inputTool }}"
                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                                         <label for="vue-checkbox"
                                             class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$addchecklists->inputTool}}</label>
-                                        {{-- <input type="number" id="visitors" wire:model='toolCount'
+                                        <input type="number" wire:model='toolcount'
                                             class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-2/6 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            style="" placeholder=""> --}}
+                                            placeholder="{{ $toolcount }}" disabled>
                                     </div>
                                 </li>
                                 @endforeach

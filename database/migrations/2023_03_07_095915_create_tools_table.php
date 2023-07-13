@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('userName')->unique();
             $table->json('toolLists');
+            $table->date('outDate');
+            $table->json('toolCount');
             $table->timestamps();
         });
     }
