@@ -42,16 +42,16 @@ class ToolsComponent extends Component
     public function instore(){
         $day =Carbon::today()->format("Y-m-d");
         $this->inoutDate = $day;
-        $intool_Name = DB::table('tools')->where('outDate', '=',$this->inoutDate)->exists();
-        $intool_Date = DB::table('tools')->where('outDate', '=',$this->inoutDate)->exists();
-        $intool_Tool = DB::table('tools')->where('outDate', '=','2023-07-18')->orwhere('userName', '=','s')->get('toolLists');
 
-        dd($intool_Tool);
-        // dd($intool_Date);
+        $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=',$this->inuserName)->exists();
+        $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=','s')->exists();
+
+        // dd($intool_Tool);
+        // dd($intool_Date_Name);
         // dd($intool_Name);
 
         try{
-            if($intool_Date && $intool_Name){
+            if($intool_Date_Name){
                 // dd('hello');
                 if($intool_Tool){
                     dd('success');
