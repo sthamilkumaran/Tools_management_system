@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tools', function (Blueprint $table) {
             $table->id();
-            $table->string('userName')->unique();
+            $table->string('userName');
             $table->json('toolLists');
             $table->date('outDate');
             $table->json('toolCount');

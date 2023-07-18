@@ -44,7 +44,7 @@ class ToolsComponent extends Component
         $this->inoutDate = $day;
         $intool_Name = DB::table('tools')->where('outDate', '=',$this->inoutDate)->exists();
         $intool_Date = DB::table('tools')->where('outDate', '=',$this->inoutDate)->exists();
-        $intool_Tool = DB::table('tools')->where('outDate', '=','2023-07-18')->orwhere('outDate', '=',$this->inoutDate)->get('toolLists');
+        $intool_Tool = DB::table('tools')->where('outDate', '=','2023-07-18')->orwhere('userName', '=','s')->get('toolLists');
 
         dd($intool_Tool);
         // dd($intool_Date);
