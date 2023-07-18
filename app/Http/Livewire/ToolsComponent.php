@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use App\Models\Tool;
 use App\Models\Addchecklist;
@@ -35,12 +36,60 @@ class ToolsComponent extends Component
         }
     }
 
+    // in tools store ----------------------------------------------------------------------------------------->
+    public $intool, $inuserName, $intoolLists, $inoutDate, $intoolCount, $intoolDam;
+
+    public function instore(){
+        $day =Carbon::today()->format("Y-m-d");
+        $this->inoutDate = $day;
+        $intool_Name = DB::table('tools')->where('outDate', '=',$this->inoutDate)->exists();
+        $intool_Date = DB::table('tools')->where('outDate', '=',$this->inoutDate)->exists();
+        $intool_Tool = DB::table('tools')->where('outDate', '=','2023-07-18')->orwhere('outDate', '=',$this->inoutDate)->get('toolLists');
+
+        dd($intool_Tool);
+        // dd($intool_Date);
+        // dd($intool_Name);
+
+        try{
+            if($intool_Date && $intool_Name){
+                // dd('hello');
+                if($intool_Tool){
+                    dd('success');
+                }else{
+                    dd('worng');
+                }
+            // Intool::create([
+            //     'inuserName'=>$this->inuserName,
+            //     'inoutDate'=>$this->inoutDate,
+            //     'intoolLists' => json_encode($this->intoolLists),
+            //     'intoolCount' =>json_encode($this->intoolCount),
+            //     'intoolDam' =>json_encode($this->intoolDam),
+            // ]);
+
+
+        }else{
+            dd('gg');
+        }
+
+        }catch(\Exception $e){
+            dd('error');
+        }
+
+    }
+
     public function render()
     {
-        $tool = Tool::All();
+        // frond get data---------------------------------------------->
         $today = Carbon::today()->format("Y-m-d");
         $count = 1;
+
+        // database---------------------------------------------------->
+        $tool = Tool::All();
         $addchecklist = Addchecklist::All();
-        return view('livewire.tools-component',['tools' => $tool, 'addchecklist' => $addchecklist, 'today1' => $today, 'toolcount' => $count]);
+
+        return view('livewire.tools-component',['tools' => $tool,
+        'addchecklist' => $addchecklist,
+        'today1' => $today,
+        'toolcount' => $count]);
     }
 }
