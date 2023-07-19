@@ -47,7 +47,7 @@ class ToolsComponent extends Component
         $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->get('toolLists');
 
         $test = $intool_Tool->toArray();
-        dd($test);
+        // dd($test);
         // dd($intool_Date_Name);
         // dd($intool_Name);
 
