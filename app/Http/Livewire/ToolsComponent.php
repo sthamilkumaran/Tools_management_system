@@ -37,23 +37,24 @@ class ToolsComponent extends Component
     }
 
     // in tools store ----------------------------------------------------------------------------------------->
-    public $intool, $inuserName, $intoolLists, $inoutDate, $intoolCount, $intoolDam;
-
+    public $intool, $inuserName, $inDate, $intoolCount, $intoolDam;
+    public $intoolLists = [];
     public function instore(){
         $day =Carbon::today()->format("Y-m-d");
-        $this->inoutDate = $day;
+        $this->inDate = $day;
 
-        $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=',$this->inuserName)->exists();
-        $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=','s')->exists();
+        $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->exists();
+        $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->get('toolLists');
 
-        // dd($intool_Tool);
+        $test = $intool_Tool->toArray();
+        dd($test);
         // dd($intool_Date_Name);
         // dd($intool_Name);
 
         try{
             if($intool_Date_Name){
                 // dd('hello');
-                if($intool_Tool){
+                if($test == $this->intoolLists){
                     dd('success');
                 }else{
                     dd('worng');
