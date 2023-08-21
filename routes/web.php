@@ -13,7 +13,8 @@ use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\AddchecklistController;
 use App\Http\Controllers\reportdetailsController;
 use App\Http\Controllers\OvertimeDetailsController;
- 
+use App\Http\Controllers\PostController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,4 +52,4 @@ Route::get('/overtimedetails', [OvertimeDetailsController::class, 'index']);
 
 
 //login page
-
+Route::resource('posts', PostController::class);

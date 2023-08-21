@@ -46,20 +46,29 @@ class ToolsComponent extends Component
         $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->exists();
         $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->get('toolLists');
 
-        $test = $intool_Tool->toArray();
+        $test = json_decode($intool_Tool);
 
-        // dd($test);
+
+        dd($intool_Tool);
+        // $i = 0;
+        // while($i < count($test))
+        // {
+        //     dd($test[$i]."\n");
+        //     // echo $test[$i]."\n";
+        //     $i++;
+        // }
+        // dd($this->intoolLists);
         // dd($intool_Date_Name);
-        // dd($intool_Name);
+        // dd($intool_Tool[1]);
 
         try{
             if($intool_Date_Name){
                 // dd('hello');
-                if($test == $this->intoolLists){
-                    dd('success');
-                }else{
-                    dd('worng');
-                }
+                // if($test[0] == $this->intoolLists[3]){
+                //     dd('success');
+                // }else{
+                //     dd('worng');
+                // }
             // Intool::create([
             //     'inuserName'=>$this->inuserName,
             //     'inoutDate'=>$this->inoutDate,

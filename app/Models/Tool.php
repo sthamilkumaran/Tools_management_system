@@ -15,5 +15,13 @@ class Tool extends Model
         'toolCount',
     ];
     public $timestamps = true;
+    public function setToolListsAttribute($value)
+    {
+        $this->attributes['toolLists'] = json_encode($value);
+    }
 
+    public function getToolListsAttribute($value)
+    {
+        return $this->attributes['toolLists'] = json_decode($value);
+    }
 }
