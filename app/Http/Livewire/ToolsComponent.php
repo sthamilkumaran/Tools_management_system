@@ -52,16 +52,29 @@ class ToolsComponent extends Component
         // dd($array);
         $tool_array = json_decode($intool_Tool);
 
-        if($tool_array[1] == "sd") {
-            dd("tool_array");
-        } else {
-            dd("not an array");
+        // if($tool_array[1] == "sd") {
+        //     dd("tool_array");
+        // } else {
+        //     dd("not an array");
+        // }
+        // if($array == "sd") {
+        //     dd("array");
+        // } else {
+        //     dd("not an array");
+        // }
+        // while loop for array check
+        $i = 0;
+        while($i < count($array))
+        {
+            // dd($array[$i]."\n");
+            if($array == "sd") {
+                dd("array");
+            } else {
+                dd("not an array");
+            }
+            $i++;
         }
-        if($array == "sd") {
-            dd("array");
-        } else {
-            dd("not an array");
-        }
+
 
         // $i = 0;
         // while($i < count($test))
