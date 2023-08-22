@@ -43,14 +43,15 @@ class ToolsComponent extends Component
         $day =Carbon::today()->format("Y-m-d");
         $this->inDate = $day;
 
-        $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=',$this->inuserName)->exists();
-        $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=', $this->inuserName)->first();
+        // $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=',$this->inuserName)->exists();
+        $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=', $this->inuserName)->first();
 
         // dd($intool_Date_Name->toolLists);
         $array =  (array) json_decode($intool_Tool->toolLists);
-        $tool_array =  (array) json_decode($intool_Tool);
+        dd($array);
+        // $tool_array =  (array) json_decode($intool_Tool);
         // dd($array);
-        $tool_array = json_decode($intool_Tool);
+        // $tool_array = json_decode($intool_Tool);
 
         // if($tool_array[1] == "sd") {
         //     dd("tool_array");
@@ -87,30 +88,30 @@ class ToolsComponent extends Component
         // dd($intool_Date_Name);
         // dd($intool_Tool[1]);
 
-        try{
-            if($intool_Date_Name){
-                // dd('hello');
-                // if($test[0] == $this->intoolLists[3]){
-                //     dd('success');
-                // }else{
-                //     dd('worng');
-                // }
-            // Intool::create([
-            //     'inuserName'=>$this->inuserName,
-            //     'inoutDate'=>$this->inoutDate,
-            //     'intoolLists' => json_encode($this->intoolLists),
-            //     'intoolCount' =>json_encode($this->intoolCount),
-            //     'intoolDam' =>json_encode($this->intoolDam),
-            // ]);
+        // try{
+        //     if(){
+        //         // dd('hello');
+        //         // if($test[0] == $this->intoolLists[3]){
+        //         //     dd('success');
+        //         // }else{
+        //         //     dd('worng');
+        //         // }
+        //     // Intool::create([
+        //     //     'inuserName'=>$this->inuserName,
+        //     //     'inoutDate'=>$this->inoutDate,
+        //     //     'intoolLists' => json_encode($this->intoolLists),
+        //     //     'intoolCount' =>json_encode($this->intoolCount),
+        //     //     'intoolDam' =>json_encode($this->intoolDam),
+        //     // ]);
 
 
-        }else{
-            dd('gg');
-        }
+        // }else{
+        //     dd('gg');
+        // }
 
-        }catch(\Exception $e){
-            dd('error');
-        }
+        // }catch(\Exception $e){
+        //     dd('error');
+        // }
 
     }
 
