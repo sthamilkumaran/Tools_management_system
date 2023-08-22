@@ -48,10 +48,16 @@ class ToolsComponent extends Component
 
         // dd($intool_Date_Name->toolLists);
         $array =  (array) json_decode($intool_Tool->toolLists);
+        $tool_array =  (array) json_decode($intool_Tool);
         // dd($array);
         $tool_array = json_decode($intool_Tool);
 
-        if($array[1] == "sd") {
+        if($tool_array[1] == "sd") {
+            dd("tool_array");
+        } else {
+            dd("not an array");
+        }
+        if($array == "sd") {
             dd("array");
         } else {
             dd("not an array");
