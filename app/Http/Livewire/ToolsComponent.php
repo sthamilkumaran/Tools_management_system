@@ -43,13 +43,30 @@ class ToolsComponent extends Component
         $day =Carbon::today()->format("Y-m-d");
         $this->inDate = $day;
 
-        $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->exists();
-        $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->get('toolLists');
+        // $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->exists();
+        // $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inDate)->where('userName', '=',$this->inuserName)->get('toolLists');
 
-        $test = json_decode($intool_Tool);
+        // $test = json_decode($intool_Tool);
 
 
-        dd($intool_Tool);
+        // dd($intool_Tool);
+
+        $intool_Date_Name = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=',$this->inuserName)->first();
+        // $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=', $this->inuserName)->get('toolLists');
+        // $user = DB::table('tools')->where('email', '=', Input::get('email'));
+
+        $intool_Tool = DB::table('tools')->where('outDate', '=',$this->inoutDate)->where('userName', '=', $this->inuserName)->get('toolLists');
+        // dd($intool_Date_Name->toolLists);
+        $array =  (array) json_decode($intool_Date_Name->toolLists);
+        // dd($array);
+        $tool_array = json_decode($intool_Tool);
+
+        if($array[1] == "sd") {
+            dd("array");
+        } else {
+            dd("not an array");
+        }
+
         // $i = 0;
         // while($i < count($test))
         // {

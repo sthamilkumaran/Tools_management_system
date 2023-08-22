@@ -30,7 +30,7 @@
                                 <td>{{ $post->name }}</td>
 
                                 <td>
-                                    @foreach($post->category as $value)
+                                    @foreach($post->cateory as $value)
                                         {{$value}},
                                     @endforeach
                                 </td>
